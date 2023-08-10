@@ -1,0 +1,22 @@
+body{
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(58, 127, 255);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  background-color: rgb(19, 19, 107);
+  width: 50rem;
+  height: 25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.questionSection {
+  color: white;
+}
