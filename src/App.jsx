@@ -38,16 +38,21 @@ import './App.css'
   
 
     const [counter, setCounter] = useState(0)
-    const [done, setDone] = useState(true)
+    const [done, setDone] = useState(false)
+    const [points, setPoints] = useState(0)
 
-    const handleSubmit = () => {
+    const handleSubmit = (correct) => {
+
+      if(correct === true) {
+        setPoints(prevPoints => prevPoints + 1)
+      }
       
       if(counter < data.length - 1){
         setCounter(prevCounter => prevCounter + 1)
         }
 
       else {
-        alert("You Are Done")
+        setDone(true)
       }
 
     }
@@ -61,7 +66,7 @@ import './App.css'
           
           
           
-          {done ? (<section className='finish'><h2>You have completed the quiz. You got 4/{data.length}</h2></section>) : (
+          {done ? (<section className='finish'><h2>You have completed the quiz. You got {points}/{data.length}</h2></section>) : (
             <>
               <section className='questionSection'>
                 <h1>Question {counter + 1}/4</h1>
@@ -69,7 +74,7 @@ import './App.css'
               </section>
               <section className='answerSection'>
               {data[counter].answerOptions.map((answerOption) => (
-                <button key={answerOption.id} onClick={handleSubmit}>{answerOption.answerText}</button>
+                <button key={answerOption.id} onClick={() => handleSubmit(answerOption.correct)}>{answerOption.answerText}</button>
               ))}
               
               </section>
